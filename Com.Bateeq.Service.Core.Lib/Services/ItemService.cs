@@ -578,7 +578,8 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             Item item = DbContext.Items.FirstOrDefault(x => x.Id == Id && x._IsDeleted.Equals(false));
             if (!string.IsNullOrWhiteSpace(item.ImagePath))
             {
-                item.ImgFile = await this.AzureImageService.DownloadImage(item.GetType().Name, item.ImagePath);
+                 item.ImgFile = await this.AzureImageService.DownloadImage(/*item.GetType().Name*/ String.Empty, item.ImagePath);
+
             }
             return item;
 
