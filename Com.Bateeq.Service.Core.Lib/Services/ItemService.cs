@@ -179,7 +179,11 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             itemVM.InternationalRetail = item.InternatioalRetail;
             itemVM.InternationalCOGS = item.InternatinalCOGS;
             itemVM.price = item.DomesticCOGS;
-
+            itemVM.code = item.Code;
+            itemVM.name = item.Name;
+            itemVM.Uom = item.Uom;
+            itemVM.Size = item.Size;
+            itemVM.ArticleRealizationOrder = item.ArticleRealizationOrder;
             itemVM.dataDestination = new List<ItemViewModelRead>{
                 new ItemViewModelRead {
                     ArticleRealizationOrder = item.ArticleRealizationOrder,

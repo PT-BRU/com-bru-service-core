@@ -6,23 +6,23 @@ namespace Com.DanLiris.Service.Core.Lib.ViewModels
 {
     public class ItemViewModel : BasicViewModelOld
     {
-        //public string code { get; set; }
+        public string code { get; set; }
 
-        //public string name { get; set; }
+        public string name { get; set; }
 
-        //public string Description { get; set; }
+        public string Description { get; set; }
 
-        //public string Uom { get; set; }
+        public string Uom { get; set; }
 
-        //public string Tags { get; set; }
+        public string Tags { get; set; }
 
-        //public string Remark { get; set; }
+        public string Remark { get; set; }
 
-        //public string ArticleRealizationOrder { get; set; }
+        public string ArticleRealizationOrder { get; set; }
 
-        //public string Size { get; set; }
+        public string Size { get; set; }
 
-        //public string ImagePath { get; set; }
+        public string ImagePath { get; set; }
 
         public List<ItemViewModelRead>  dataDestination { get; set; }
 
