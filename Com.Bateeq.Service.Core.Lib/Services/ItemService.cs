@@ -184,6 +184,8 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             itemVM.Uom = item.Uom;
             itemVM.Size = item.Size;
             itemVM.ArticleRealizationOrder = item.ArticleRealizationOrder;
+            itemVM.ImageFile = item.ImgFile;
+            itemVM.ImagePath = item.ImagePath;
             itemVM.dataDestination = new List<ItemViewModelRead>{
                 new ItemViewModelRead {
                     ArticleRealizationOrder = item.ArticleRealizationOrder,
