@@ -92,7 +92,7 @@ namespace Com.DanLiris.Service.Core.WebApi.Controllers.v1.BasicControllers
 
                // service.Username = User.Claims.Single(p => p.Type.Equals("username")).Value;
 
-                List<ItemViewModel> Data = await service.GetRO1(ro);
+                List<ItemViewModel> Data = await service.GetRONoImg(ro);
 
                 
 
@@ -258,7 +258,7 @@ namespace Com.DanLiris.Service.Core.WebApi.Controllers.v1.BasicControllers
         }
 
 
-        [HttpPut("upload/image")]
+        [HttpPost("upload/image")]
         public async Task<IActionResult> ImgPost([FromBody]ItemViewModel viewModel)
         {
             try
