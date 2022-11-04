@@ -93,7 +93,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
 
             IQueryable<StorageViewModel> Query = (from a in DbContext.Modules
                                                   join b in DbContext.ModuleDestinations on a.Id equals b.ModuleId
-                                                  join c in DbContext.Storages on b.DestinationValue equals c.UId
+                                                  join c in DbContext.Storages on b.DestinationValue equals c.Code
 
                                                   where
                                                   a.Code == Keyword
@@ -140,7 +140,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
 
             IQueryable<StorageViewModel> Query = (from a in DbContext.Modules
                                                   join b in DbContext.ModuleSources on a.Id equals b.ModuleId
-                                                  join c in DbContext.Storages on b.SourceValue equals c.UId
+                                                  join c in DbContext.Storages on b.SourceValue equals c.Code
 
                                                   where
                                                   a.Code == Keyword
