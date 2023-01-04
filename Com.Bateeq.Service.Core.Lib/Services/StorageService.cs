@@ -87,7 +87,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
         }
 
 
-        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetDestination(int Page = 1, int Size = 25, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
+        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetDestination(int Page = 1, int Size = 500, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
         {
 
 
@@ -134,7 +134,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             return Tuple.Create(Data, TotalData, OrderDictionary);
         }
 
-        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetSource(int Page = 1, int Size = 25, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
+        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetSource(int Page = 1, int Size = 500, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
         {
 
 
