@@ -62,7 +62,7 @@ namespace Com.DanLiris.Service.Core.WebApi.Controllers.v1.BasicControllers
         }
 
         [HttpGet("destination")]
-        public IActionResult GetDestination(int Page = 1, int Size = 25, string Order = "{}", [Bind(Prefix = "Select[]")]List<string> Select = null, string Keyword = "", string Filter = "{}")
+        public IActionResult GetDestination(int Page = 1, int Size = 500, string Order = "{}", [Bind(Prefix = "Select[]")]List<string> Select = null, string Keyword = "", string Filter = "{}")
         {
             //try
             //{
@@ -100,7 +100,7 @@ namespace Com.DanLiris.Service.Core.WebApi.Controllers.v1.BasicControllers
         }
 
         [HttpGet("source")]
-        public IActionResult GetSource(int Page = 1, int Size = 25, string Order = "{}", [Bind(Prefix = "Select[]")]List<string> Select = null, string Keyword = "", string Filter = "{}")
+        public IActionResult GetSource(int Page = 1, int Size = 500, string Order = "{}", [Bind(Prefix = "Select[]")]List<string> Select = null, string Keyword = "", string Filter = "{}")
         {
 
             try

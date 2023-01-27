@@ -179,7 +179,13 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             itemVM.InternationalRetail = item.InternatioalRetail;
             itemVM.InternationalCOGS = item.InternatinalCOGS;
             itemVM.price = item.DomesticCOGS;
-
+            itemVM.code = item.Code;
+            itemVM.name = item.Name;
+            itemVM.Uom = item.Uom;
+            itemVM.Size = item.Size;
+            itemVM.ArticleRealizationOrder = item.ArticleRealizationOrder;
+            itemVM.ImageFile = item.ImgFile;
+            itemVM.ImagePath = item.ImagePath;
             itemVM.dataDestination = new List<ItemViewModelRead>{
                 new ItemViewModelRead {
                     ArticleRealizationOrder = item.ArticleRealizationOrder,
@@ -572,7 +578,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             Item item = DbContext.Items.FirstOrDefault(x => x.Id == Id && x._IsDeleted.Equals(false));
             if (!string.IsNullOrWhiteSpace(item.ImagePath))
             {
-                item.ImgFile = await this.AzureImageService.DownloadImage(item.GetType().Name, item.ImagePath);
+                item.ImgFile = await this.AzureImageService.DownloadImage(/*item.GetType().Name*/ String.Empty, item.ImagePath);
             }
             return item;
 
@@ -585,6 +591,8 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             return item.Select(x => new ItemViewModel()
             {
                 _id = x.Id,
+                code = x.Code,
+                name = x.Name,
                 dataDestination = new List<ItemViewModelRead>() { new ItemViewModelRead() { code = x.Code, name = x.Name, ArticleRealizationOrder = x.ArticleRealizationOrder, _id = x.Id, Description = x.Description, ImagePath = x.ImagePath, Remark = x.Remark, Size = x.Size, Tags = x.Tags, Uom = x.Uom } },
                 DomesticCOGS = x.DomesticCOGS,
                 DomesticRetail = x.DomesticRetail,
@@ -598,24 +606,42 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             }).ToListAsync();
         }
 
+        public Task<List<ItemViewModel>> GetRONoImg(string RO)
+        {
+
+            var item = DbContext.Items.Where(x => x.ArticleRealizationOrder == RO && (x.ImagePath == null || x.ImagePath ==""));
+            return item.Select(x => new ItemViewModel()
+            {
+                _id = x.Id,
+                code = x.Code,
+                name = x.Name,
+                dataDestination = new List<ItemViewModelRead>() { new ItemViewModelRead() { code = x.Code, name = x.Name, ArticleRealizationOrder = x.ArticleRealizationOrder, _id = x.Id, Description = x.Description, ImagePath = x.ImagePath, Remark = x.Remark, Size = x.Size, Tags = x.Tags, Uom = x.Uom } },
+                DomesticCOGS = x.DomesticCOGS,
+                DomesticRetail = x.DomesticRetail,
+                DomesticSale = x.DomesticSale,
+                DomesticWholesale = x.DomesticWholesale,
+                InternationalCOGS = x.InternatinalCOGS,
+                InternationalRetail = x.InternatioalRetail,
+                InternationalSale = x.InternationalSale,
+                InternationalWholesale = x.InternationalWholesale,
+                price = 0
+            }).ToListAsync();
+        }
         public Task<List<ItemLoader>> GetRO2(string RO)
         {
 
             var item = DbContext.Items.Where(x => x.ArticleRealizationOrder == RO);
             return item.Select(x => new ItemLoader()
             {
-                //code = x.Code,
-                //name = x.Name,
+               
                 //ArticleRealizationOrder = x.ArticleRealizationOrder,
                 //_id = x.Id,
                 //Description = x.Description,
                 //ImagePath = x.ImagePath,
-                //Remark = x.Remark,
-                //Size = x.Size,
-                //Tags = x.Tags,
-                //Uom = x.Uom,
+               
 
                 dataDestination = new ItemViewModelRead { code = x.Code, name = x.Name, ArticleRealizationOrder = x.ArticleRealizationOrder, _id = x.Id, Description = x.Description, ImagePath = x.ImagePath, Remark = x.Remark, Size = x.Size, Tags = x.Tags, Uom = x.Uom },
+               
                 DomesticCOGS = x.DomesticCOGS,
                 DomesticRetail = x.DomesticRetail,
                 DomesticSale = x.DomesticSale,
@@ -750,7 +776,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             string IMagePath = "";
             if (!string.IsNullOrWhiteSpace(model.ImageFile))
             {
-                IMagePath = await this.AzureImageService.UploadImage(model2.GetType().Name, model._id, model._createdDate, model.ImageFile);
+                IMagePath = await this.AzureImageService.UploadImage(/*model2.GetType().Name*/String.Empty, model._id, model._createdDate, model.ImageFile);
             }
 
             foreach (var data in model.dataDestination)

@@ -87,13 +87,13 @@ namespace Com.DanLiris.Service.Core.Lib.Services
         }
 
 
-        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetDestination(int Page = 1, int Size = 25, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
+        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetDestination(int Page = 1, int Size = 500, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
         {
 
 
             IQueryable<StorageViewModel> Query = (from a in DbContext.Modules
                                                   join b in DbContext.ModuleDestinations on a.Id equals b.ModuleId
-                                                  join c in DbContext.Storages on b.DestinationValue equals c.UId
+                                                  join c in DbContext.Storages on b.DestinationValue equals c.Code
 
                                                   where
                                                   a.Code == Keyword
@@ -134,13 +134,13 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             return Tuple.Create(Data, TotalData, OrderDictionary);
         }
 
-        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetSource(int Page = 1, int Size = 25, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
+        public Tuple<List<StorageViewModel>, int, Dictionary<string, string>> GetSource(int Page = 1, int Size = 500, string Order = "{}", List<string> select = null, string Keyword = null, string Filter = "{}")
         {
 
 
             IQueryable<StorageViewModel> Query = (from a in DbContext.Modules
                                                   join b in DbContext.ModuleSources on a.Id equals b.ModuleId
-                                                  join c in DbContext.Storages on b.SourceValue equals c.UId
+                                                  join c in DbContext.Storages on b.SourceValue equals c.Code
 
                                                   where
                                                   a.Code == Keyword
