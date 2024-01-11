@@ -30,7 +30,23 @@ namespace Com.DanLiris.Service.Core.Lib.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            throw new NotImplementedException();
+            List<ValidationResult> validationResult = new List<ValidationResult>();
+            if (string.IsNullOrWhiteSpace(this.Code))
+                yield return new ValidationResult("Kode tidak boleh kosong", new List<string> { "code" });
+
+            if (string.IsNullOrWhiteSpace(this.Name))
+                yield return new ValidationResult("Nama tidak boleh kosong", new List<string> { "name" });
+
+            ArticleCategoryService service = (ArticleCategoryService)validationContext.GetService(typeof(ArticleCategoryService));
+
+            if (service.DbContext.Set<ArticleCategory>().Count(r => r._IsDeleted.Equals(false) && r.Id != this.Id && r.Code.Equals(this.Code)) > 0)
+            {
+                yield return new ValidationResult("Kode sudah ada", new List<string> { "code" });
+            }
+            if (service.DbContext.Set<ArticleCategory>().Count(r => r._IsDeleted.Equals(false) && r.Id != this.Id && r.Name.Equals(this.Name)) > 0)
+            {
+                yield return new ValidationResult("Nama sudah ada", new List<string> { "name" });
+            }
         }
     }
 }

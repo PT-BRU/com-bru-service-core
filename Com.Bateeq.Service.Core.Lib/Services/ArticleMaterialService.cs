@@ -101,6 +101,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             materialVM._updateAgent = material._LastModifiedAgent;
             materialVM.code = material.Code;
             materialVM.name = material.Name;
+            materialVM.Description = material.Description;
 
 
             return materialVM;
@@ -122,6 +123,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             material._LastModifiedAgent = materialVM._updateAgent;
             material.Code = materialVM.code;
             material.Name = materialVM.name;
+            material.Description = materialVM.Description;
 
             return material;
         }
