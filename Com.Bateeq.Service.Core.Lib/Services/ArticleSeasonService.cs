@@ -101,7 +101,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             seasonVM._updateAgent = season._LastModifiedAgent;
             seasonVM.code = season.Code;
             seasonVM.name = season.Name;
-
+            seasonVM.Description = season.Description;
 
             return seasonVM;
         }
@@ -122,6 +122,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             season._LastModifiedAgent = seasonVM._updateAgent;
             season.Code = seasonVM.code;
             season.Name = seasonVM.name;
+            season.Description = seasonVM.Description;
 
             return season;
         }

@@ -101,6 +101,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             counterVM._updateAgent = counter._LastModifiedAgent;
             counterVM.code = counter.Code;
             counterVM.name = counter.Name;
+            counterVM.Description = counter.Description;
 
 
             return counterVM;
@@ -122,6 +123,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             counter._LastModifiedAgent = counterVM._updateAgent;
             counter.Code = counterVM.code;
             counter.Name = counterVM.name;
+            counter.Description = counterVM.Description;
 
             return counter;
         }

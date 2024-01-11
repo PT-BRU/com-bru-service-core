@@ -101,6 +101,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             subCounterVM._updateAgent = subCounter._LastModifiedAgent;
             subCounterVM.code = subCounter.Code;
             subCounterVM.name = subCounter.Name;
+            subCounterVM.Description = subCounter.Description;
 
 
             return subCounterVM;
@@ -122,6 +123,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             subCounter._LastModifiedAgent = subCounterVM._updateAgent;
             subCounter.Code = subCounterVM.code;
             subCounter.Name = subCounterVM.name;
+            subCounter.Description = subCounterVM.Description;
 
             return subCounter;
         }

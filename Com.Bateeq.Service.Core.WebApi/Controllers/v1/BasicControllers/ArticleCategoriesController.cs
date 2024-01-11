@@ -15,8 +15,10 @@ namespace Com.DanLiris.Service.Core.WebApi.Controllers.v1.BasicControllers
     public class ArticleCategoriesController : BasicController<ArticleCategoryService, ArticleCategory, ArticleCategoryViewModel, CoreDbContext>
     {
         private new static readonly string ApiVersion = "1.0";
+        ArticleCategoryService service;
         public ArticleCategoriesController(ArticleCategoryService service) : base(service, ApiVersion)
         {
+            this.service = service;
         }
 
         //[HttpGet("join-division")]
