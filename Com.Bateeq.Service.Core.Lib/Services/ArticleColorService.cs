@@ -100,7 +100,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             colorVM._updateAgent = color._LastModifiedAgent;
             colorVM.code = color.Code;
             colorVM.name = color.Name;
-
+            colorVM.Description = color.Description;
 
             return colorVM;
         }
@@ -121,6 +121,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             color._LastModifiedAgent = colorVM._updateAgent;
             color.Code = colorVM.code;
             color.Name = colorVM.name;
+            color.Description = colorVM.Description;
 
             return color;
         }

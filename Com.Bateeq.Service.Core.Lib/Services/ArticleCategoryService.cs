@@ -188,7 +188,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             categoryVM._updateAgent = category._LastModifiedAgent;
             categoryVM.code = category.Code;
             categoryVM.name = category.Name;
-      
+            categoryVM.Description = category.Description;
 
             return categoryVM;
         }
@@ -209,6 +209,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             category._LastModifiedAgent = categoryVM._updateAgent;
             category.Code = categoryVM.code;
             category.Name = categoryVM.name;
+            category.Description = categoryVM.Description;
 
             return category;
         }
