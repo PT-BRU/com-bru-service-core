@@ -100,7 +100,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             collectionVM._updateAgent = collection._LastModifiedAgent;
             collectionVM.code = collection.Code;
             collectionVM.name = collection.Name;
-
+            collectionVM.Description = collection.Description;
 
             return collectionVM;
         }
@@ -121,6 +121,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             collection._LastModifiedAgent = collectionVM._updateAgent;
             collection.Code = collectionVM.code;
             collection.Name = collectionVM.name;
+            collection.Description = collectionVM.Description;
 
             return collection;
         }

@@ -98,7 +98,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             procesVM._updateAgent = proces._LastModifiedAgent;
             procesVM.code = proces.Code;
             procesVM.name = proces.Name;
-
+            procesVM.Description = proces.Description;
 
             return procesVM;
         }
@@ -119,6 +119,7 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             proces._LastModifiedAgent = procesVM._updateAgent;
             proces.Code = procesVM.code;
             proces.Name = procesVM.name;
+            proces.Description = procesVM.Description;
 
             return proces;
         }
