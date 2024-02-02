@@ -95,13 +95,10 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             return Tuple.Create(Data, TotalData, OrderDictionary, SelectedFields);
         }
 
-        public Task<List<SizeViewModel>> GetSizeName(string code)
+        public Task<List<SizeModel>> GetSizeName(string code)
         {
             var item = DbContext.Sizes.Where(x => x.Size == code);
-            return item.Select(x => new SizeViewModel()
-            {
-                Size=x.Size
-            }).ToListAsync();
+            return item.ToListAsync();
         }
     }
 }
