@@ -24,8 +24,8 @@ namespace Com.DanLiris.Service.Core.WebApi.Controllers.v1.BasicControllers
             this.service = service;
         }
 
-        [HttpGet("sizename/{code}")]
-        public async Task<IActionResult> GetSizeName([FromRoute] string code)
+        [HttpGet("sizename")]
+        public async Task<IActionResult> GetSizeName(string code)
         {
             try
             {
