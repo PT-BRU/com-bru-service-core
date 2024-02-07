@@ -3,6 +3,7 @@ using Com.DanLiris.Service.Core.Lib.Interfaces;
 using Com.DanLiris.Service.Core.Lib.Models;
 using Com.DanLiris.Service.Core.Lib.ViewModels;
 using Com.Moonlay.NetCore.Lib;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace Com.DanLiris.Service.Core.Lib.Services
 {
@@ -91,6 +94,12 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             int TotalData = pageable.TotalCount;
 
             return Tuple.Create(Data, TotalData, OrderDictionary, SelectedFields);
+        }
+
+        public Task<List<SizeModel>> GetSizeName(string code)
+        {
+            var item = DbContext.Sizes.Where(x => Regex.Replace(x.Size, @"\s", "") == Regex.Replace(code, @"\s", ""));
+            return item.ToListAsync();
         }
     }
 }
