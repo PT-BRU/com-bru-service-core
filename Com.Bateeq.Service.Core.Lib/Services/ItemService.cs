@@ -775,8 +775,11 @@ namespace Com.DanLiris.Service.Core.Lib.Services
             Item model2 = new Item();
             string IMagePath = "";
             if (!string.IsNullOrWhiteSpace(model.ImageFile))
-            { 
-                IMagePath = await this.AzureImageService.UploadImage(/*model2.GetType().Name*/String.Empty, model.dataDestination[0]._id, model._createdDate, model.ImageFile);
+            {
+                var id = model.dataDestination.First()._id;
+                //var createdDate= model.dataDestination.First().;
+                //IMagePath = await this.AzureImageService.UploadImage(/*model2.GetType().Name*/String.Empty, model._id, model._createdDate, model.ImageFile);
+                IMagePath = await this.AzureImageService.UploadImage(/*model2.GetType().Name*/String.Empty, id, DateTime.Now, model.ImageFile);
             }
 
             foreach (var data in model.dataDestination)
